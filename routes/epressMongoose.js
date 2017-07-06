@@ -22,11 +22,27 @@ app.post('/dogName', function(req, res) {
             console.log(err)
         }
         console.log(data)
+
         res.json(data)
     })
 
 })
 
+app.post('/registerNewDogy',function(req,res){
+    var dog1 = new dog({'name':req.body.name,'age':req.body.age,'collar_id':req.body.collar_id})
+    dog1.save(function(err,data){
+        if(err){
+            console.log(err)
+        }
+        res.json(data)
+    })
+})
+
+app.get('/listofdogy',function(req,res){
+    dog.find(function(err,data){
+        res.json(data)
+    })
+})
 
 app.listen(port, function() {
     console.log('The server is running, ' +

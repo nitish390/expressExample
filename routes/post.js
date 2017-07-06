@@ -36,7 +36,7 @@ app.post('/registration', function(req, res) {
 	var phoneNumber  = req.body.phoneNumber;
 
 	// res.end(firstName+lastName+email+phoneNumber)
-	res.json(firstName,lastName,email,phoneNumber);
+	res.json(firstName+lastName+email+phoneNumber);
 	res.end()
 })
 
