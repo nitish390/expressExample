@@ -9,23 +9,25 @@ app.use(bodyParser.urlencoded({ // to support URL-encoded bodies
     extended: true
 }));
 
-app.get('/name/:user_name', function(req, res) {
+app.get('/name/:name', function(req, res) {
     res.status(200);
     res.set('Content-type', 'text/html');
     res.end('<html><body>' +
-        '<h1>Hello ' + req.params.user_name + '</h1>' +
+        '<h1>Hello ' + req.params.name + '</h1>' +
         '</body></html>'
     );
 });
 
-app.get('*', function(req, res) {
-    res.end('Hello World');
-});
+// app.get('*', function(req, res) {
+//     console.log(req.headers)
+//     res.end('Hello World');
+// });
 
 
 app.post('/username', function(req, res) {
 	var username = req.body.username;
-	res.end(username)
+    var headerData = req.headers.token
+	res.end(username+headerData)
 })
 
 
